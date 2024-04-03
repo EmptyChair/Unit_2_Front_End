@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+/*
+this font was taken from the G-Man
+*/
+
+* {
+  margin: 0;
+  /* внешние отступы*/
+  padding: 0;
+  /* внутренние отступы*/
+}
+
+body {
+  background-color: rgb(251, 253, 255);
+  /* font choice*/
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  /* font thickness*/
+  font-weight: 500;
+  /* font style*/
+  font-style: normal;
+}
+
+/* класс header в coffee countries */
+.header {
+  /* height */
+  height: 400px;
+  /* header's background image */
+  background-image: url(./images/Coffee.jpg);
+  background-position: center;
+  background-size: cover; /* stetch the picture to the width of parent element */
+
+  /* background-repeat: no-repeat; /* just have picture in background*/
+}
+
+h1 {
+    font-family: "Covered By Your Grace", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 100px;
+    text-align: center;
+    padding-top: 115px;
+    color: rgba(150, 61, 61, .75)
+}
+
+.main {
+    position: relative;
+    /*без доп указаний положение main не изменится*/
+}
+
+.left, .center, .right {
+    position: absolute;
+     /*без доп указаний они все будут свалены в кучу друг на друга как ближайших членов main*/
+    width: 30%;
+    top: 15px;
+    bottom: 15px;
+}
+
+.left {
+    left: 3%;
+}
+
+.right {
+    right: 3%;
+}
+
+.center {
+    left: 35%;
+    right: 35%;
+}
