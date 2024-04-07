@@ -28,7 +28,7 @@ body {
   /* header's background image */
   background-image: url(./images/Coffee.jpg);
   background-position: center;
-  background-size: cover; /* stetch the picture to the width of parent element */
+  background-size: cover; /* stretch the picture to the width of parent element */
 
   /* background-repeat: no-repeat; /* just have picture in background*/
 }
