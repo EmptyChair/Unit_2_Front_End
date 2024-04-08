@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap");
+
+body {
+  font-family: "Covered By Your Grace", cursive;
+  background-color: #f2f2f2;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  /*
+        box shadow - shadow calibration
+        1. leaning on x-axis (negative to the left, positive to teh right)
+        1. leaning on y-axis (negative to the bottom, positive to teh top)
+        3. shadow distortion speed (how far till it isn't there)
+        4. shadow color
+    */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px 0;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+button[type="submit"] {
+  background-color: #4caf4c;
+}
+
+button[type="reset"] {
+  background-color: #d25738;
+}
