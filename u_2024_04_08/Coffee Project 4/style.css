@@ -49,37 +49,26 @@ h2 {
 }
 
 .main {
-  position: relative;
-  /*без доп указаний положение main не изменится
-  absolute - поставит где начинается первый родительский элемент
-  
-  */
-}
-
-.left,
-.center,
-.right {
-  position: absolute;
-  /*без доп указаний они все будут свалены в кучу друг на друга как ближайших членов main*/
-  width: 30%;
-  /* width of a column: 30% of screen width */
-  top: 15px;
-  /* 15px from the top */
-  bottom: 15px;
-  /* 15px from the bottom */
+  display: flex;
+  align-content: center;
 }
 
 .left {
-  left: 3%;
+  display:flex;
+  justify-self: flex-start;  
+  flex-direction: column;
 }
 
 .right {
-  right: 3%;
+  display:flex;
+  justify-self: flex-end;
+  flex-direction: column;
 }
 
 .center {
-  /*right: 35%; - with "left: 35%" in the next line, this line will have no purpose - the parser will work with latest command*/
-  left: 35%;
+  display:flex;
+  justify-self: center;
+  flex-direction: column;
 }
 
 .left div {
