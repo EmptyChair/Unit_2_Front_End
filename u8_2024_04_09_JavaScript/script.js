@@ -187,6 +187,7 @@ function fourOrSevenM4(x) {
     return 11-x
 }
 
+console.log("Homework - Task 1"); 
 console.log(fourOrSevenM4('4')); 
 console.log(fourOrSevenM4('7')); 
 console.log(fourOrSevenM4(4));
@@ -226,6 +227,7 @@ function luckyNumber(x) {
     return sum1 == sum2
 }
 
+console.log("Homework - Task 2"); 
 console.log(luckyNumber(123871)); //false : (1+2+3 == 8+7+1)
 console.log(luckyNumber(111111));
 console.log(luckyNumber(651840));
@@ -240,5 +242,6 @@ function banana() {
     
 }
 
-console.log("Function banana writes this word: "+banana().toLowerCase)
+console.log("Homework - Task 3"); 
+console.log("Function banana writes this word: "+banana())
 //technically lowerCase violates the premise, but it looks nicer
