@@ -244,4 +244,3 @@ function banana() {
 
 console.log("Homework - Task 3"); 
 console.log("Function banana writes this word: "+banana())
-//technically lowerCase violates the premise, but it looks nicer
