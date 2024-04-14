@@ -11,7 +11,7 @@
 
 
 ### Примечания
-* 
+* alt + shift + up/down = copy the line
 * дз - 
 
 

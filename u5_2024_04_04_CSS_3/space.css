@@ -1,0 +1,54 @@
+div {
+    width: 900px;
+    height: 600px;
+    background-image: url('./images spess/bg.jpg');
+    position: absolute;
+}
+
+.asteroid {
+    position: absolute;
+    right: 20%;
+    top: 25%;
+}
+
+.superman {
+    position: absolute;
+    left: 75%;
+    bottom: 0;
+}
+
+.planet-3 {
+    position: absolute;
+    left: 25%;
+    bottom: 20%;
+    z-index: 9;
+}
+
+.planet-2 {
+    position: absolute;
+    left: 15%;
+    top: 25%;
+    z-index: 7;
+}
+
+.planet-1 {
+    position: absolute;
+    left: 25%;
+    bottom: 70%;
+    z-index: 6;
+}
+
+.spaceship {
+    position: absolute;
+    left: 25%;
+    bottom: 50%;
+    z-index: 8;
+}
+
+.ufo {
+    position: absolute;
+    left: 22%;
+    top: 65%;
+    z-index: 10;
+}
+/* z-index larger - closer to viewer */
