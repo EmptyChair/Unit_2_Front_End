@@ -7,33 +7,36 @@ const bankAccount = {
   accountHolderName: "Alice",
   balance: 0,
 
-  deposit: (sum) => {
+  deposit (sum) {
     (sum>=5 && sum<=10000) 
     ? this.balance += sum 
     : this.depositAlert(sum)
   }, 
 
-  depositAlert: (x) => {
-    (x<5) 
-    ? alert('The sum you are offering ('+x+' Euros) is too small! Get richer, '+this.accountHolderName+'!') 
-    : alert("The sum you are offering ("+x+" Euros) is too big to be processed without a manager. Please contact one of our colleagues at the desk.")
+  depositAlert (x) {
+    if (x>=0 && x<5) {
+      alert('The sum you are offering ('+x+' Euros) is too small! Get richer, '+this.accountHolderName+'!');
+    } else if (x<0) {
+      alert('The sum you are offering ('+x+' Euros) is negative. Depositing negatives is not allowed.');
+    } else {
+      alert("The sum you are offering ("+x+" Euros) is too big to be processed without a manager. Please contact one of our colleagues at the desk.")
+    }
   },  
 
-  withdraw: (sum) => {
+  withdraw (sum) {
     (this.balance>=sum && sum<=5000 && sum>0) 
     ? this.balance -= sum 
     : this.withdrawalAlert(sum)       
   },
 
-  withdrawalAlert: (x) => {
-      if (x<=0) {
-          alert(this.accountHolderName+", you can't withdraw zero or negative sums.")    
-      }
-      else if (x>5000) {
-          alert(this.accountHolderName+", this sum is too great to be withdrawn without your account manager's approval. The limit is 5000 EUR.")
-      } else {
-          alert(this.accountHolderName+", you only have "+this.balance+" Euros to your name.")
-      }            
+  withdrawalAlert (x) {
+    if (x<=0) {
+      alert(this.accountHolderName+", you can't withdraw zero or negative sums.")    
+    } else if (x>5000) {
+      alert(this.accountHolderName+", this sum is too great to be withdrawn without your account manager's approval. The limit is 5000 EUR.")
+    } else {
+      alert(this.accountHolderName+", you only have "+this.balance+" Euros to your name.")
+    }            
   },    
 
   checkBalance() {
@@ -69,7 +72,7 @@ function createAccount() {
     console.log(bank);
   }
   //empty the values
-  accountIdInput.value = amountInput.value = amountInput.value = "";
+  accountIdInput.value = amountInput.value = nameInput.value = "";
 }
 
 function showAccounts() {
@@ -84,7 +87,7 @@ function showAccounts() {
     accountsListOl.appendChild(li);
   });
   //empty the values
-  accountIdInput.value = amountInput.value = amountInput.value = "";
+  accountIdInput.value = amountInput.value = nameInput.value = "";
 }
 
 // HOMEWORK
@@ -110,16 +113,15 @@ withdrawBtn.onclick = function () {
 
   // if the account with Id was actually found
   if (index !== -1) {
-    var cash = +(amountInput.value.trim());
+    let cash = +(amountInput.value.trim());
     bank[index].withdraw(cash);
-    bank[index].checkBalance();
   } else {
     alert("Account not found!");
   }
   //empty the values
   accountIdInput.value = amountInput.value = nameInput.value = "";
+  showAccounts();
 };
-
 
 depositBtn.onclick = function () {
   //checking whether we actually have something for account ID
@@ -144,12 +146,12 @@ depositBtn.onclick = function () {
   if (index !== -1) {
     var cash = +(amountInput.value.trim());
     bank[index].deposit(cash);
-    bank[index].checkBalance();
   } else {
     alert("Account not found!");
   }
   //empty the values
   accountIdInput.value = amountInput.value = nameInput.value = "";
+  showAccounts();
 };
 
 function findAccountIndexByID(ID) {
