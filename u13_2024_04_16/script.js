@@ -1,6 +1,7 @@
 // Stock
 const stock = {
     items: [
+        //initial testing stock
         { name: 'bread', price: 3, quantity: 100 },
         { name: 'milk', price: 6, quantity: 50 },
         { name: 'cheese', price: 30, quantity: 70 }
@@ -8,6 +9,7 @@ const stock = {
     totalCost: 0,
 
     addItem(item) { 
+        //my solution
         let index = this.findItemByName(item.name);         
         if (index == -1) {
             console.log("Item not found!");
@@ -18,10 +20,25 @@ const stock = {
         }        
         //make sure the total cost was updated
         this.updateTotalCost();      
+
+        //alternative solution
+        /*
+        const existingItem = this.items.find(element => element.name === item.name);
+        // existingItem is a reference to the element we need
+        if (existingItem) {
+            //if anything is in existingItem - it returns true
+            existingItem.quantity += item.quantity;
+        } else {
+            //if not found, existingItem is undefined and returns false
+            this.items.push(item);
+        }
+        this.updateTotalCost();  
+        */
     },
 
     // either remove item completely, or reduce the number accordingly
     removeItem(itemName, count) { // example: ice cream, 10 items
+        // my solution
         let index = this.findItemByName(itemName);  
         //if no such item 
         if (index == -1) {
@@ -47,16 +64,47 @@ const stock = {
         }   
         //make sure the total cost was updated
         this.updateTotalCost();
+
+        //alternative solution
+        /* 
+        const index2 = this.items.findIndex(e => e.name === itemName);
+
+        if (index2 !== -1 && itemCount <= this.items[index2].quantity ) {
+            itemCount === this.items[index2].quantity
+            ? this.items.slice(index2,1) 
+            : this.items.quantity -= itemCount
+        } else {
+            alert("Not enough of such item in stock!")
+        }
+        //make sure the total cost was updated
+        this.updateTotalCost();
+        */
     },
 
     // re-calculate total cost of the goods
     updateTotalCost() {
+        // my solution - FOR
+        /* 
         let cost = 0;
         //updates cost of all items in queque
         for (i=0; i<this.items.length; i++) {
             cost += this.items[i].price*this.items[i].quantity;
         }
         this.totalCost = cost;
+        */
+
+        //another solution - FOR OF
+        /*
+        let cost = 0;
+        for (const item of this.items) {
+            cost += item.price*item.quantity;
+        }
+        */
+        
+        //alternative solution - REDUCE() function 
+        this.totalCost = this.items.reduce((cost, item) => cost + item.price*item.quantity, 0);
+
+
     },
 
     // either find item with that name and return index i or return -1 if not present
@@ -150,4 +198,26 @@ function addItem() {
     //empty the values
     productName.value = productPrice.value = productQuantity.value = "";    
 }
+/*
+function showStats() {
+    statsList.innerHTML = "";
+    const li = document.createElement("li");
+    li.innerHTML = `
+        <p>Number of Products: ${item.name}</p>
+        <p>Total Price of all Products: ${item.price} EUR</p>
+        <p>Total Quantity of all Products: ${item.quantity}</p>
+        <p>Maximum Price out of all Products: ${item.quantity}</p>
+        <p>Average Price out of all Products: ${item.quantity}</p>
+        <p>Minimum Price out of all Products: ${item.quantity}</p>
+    `;
+    statsList.appendChild(li);
 
+
+    stock.items.forEach((item) => {
+      
+    });
+
+}
+
+add.onclick = addHandler();
+*/
