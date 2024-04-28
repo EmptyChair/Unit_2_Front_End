@@ -2,17 +2,17 @@
 const stock = {
   // pre-existing array of goods
   items: [
-    { name: "milk", price: 6, quantity: 50, selected: false },
-    { name: "cheese", price: 30, quantity: 70, selected: false },
-    { name: "meat", price: 30, quantity: 40, selected: false },
-    { name: "pizza", price: 30, quantity: 110, selected: false },
-    { name: "bread", price: 3, quantity: 100, selected: false },
+    { name: "milk", price: 6, quantity: 50, isSelected: false },
+    { name: "cheese", price: 30, quantity: 70, isSelected: false },
+    { name: "meat", price: 30, quantity: 40, isSelected: false },
+    { name: "pizza", price: 30, quantity: 110, isSelected: false },
+    { name: "bread", price: 3, quantity: 100, isSelected: false },
   ], 
 
   // cost of all items in stock
   totalCost: 0, 
 
-  // add example of item: { name, price, quantity, selected } 
+  // add example of item: { name, price, quantity, isSelected } 
   addItem(item) {  
 
     const existingItem = this.items.find((e) => e.name === item.name);
@@ -58,11 +58,10 @@ function addHandler() {
   const name = productName.value.trim();
   const price = +productPrice.value.trim();
   const quantity = +productQuantity.value.trim();
-  const selected = false;
 
   //add values
   if (name && price && price > 0 && quantity && quantity > 0) {
-    stock.addItem({ name, price, quantity, selected });
+    stock.addItem({ name, price, quantity, isSelected: false });
   }
 
   //create a list of elements
@@ -70,44 +69,70 @@ function addHandler() {
 }
 
 function clearSelection() {
-  stock.items.forEach((e) => { e.selected = false } );
+  stock.items.forEach((e) => { e.isSelected = false } );
 }
 
 function writeList() {
-  // 1. Preparation: removing values, crating list
+  // 1. Preparation: removing values, crafting list
   productName.value = productPrice.value = productQuantity.value = "";
   productsListSelected.innerHTML = "";
   productsList.innerHTML = "";
 
-  // 2. Start working through the array
-  stock.items.forEach((e) => {
+  // 2. Start working through the array and sort
+  stock.items.sort((a, b) => {
+    // if ((b.isSelected-a.isSelected) ===0 ) { //same thing
+
+    if (!(b.isSelected - a.isSelected)) {
+      if (a.price === b.price) {        
+        return a.quantity - b.quantity;
+      }
+      return a.price - b.price;
+    }
+    return b.isSelected-a.isSelected
+  }).forEach((e) => {
     // 2.1 Create a List
     const li = document.createElement("li");
     li.classList.add("list-group-item", "list-group-item-action");
     // 2.1.1 choose background color according to selection status
-    if (e.selected) {
+    if (e.isSelected) {
       li.style.backgroundColor = "grey";
     } else {
       li.style.backgroundColor = "white";
     }
+
     // 2.2 Create a Checkbox
-    const box = document.createElement("input");
-    box.style.width = "50px";
+    const box = document.createElement("input");    
     box.setAttribute("type", "checkbox");
+    box.style.width = "50px";
+    //bootstrap classes
+    //box.classList.add("form-check-input", "mx-2")
+    if (box.checked) {
+      //Bootstrap class
+      li.classList.add("list-group-item-secondary");
+    }
+    box.onclick = () => {
+      e.isSelected = !e.isSelected;
+      writeList();
+    }
+
+    //My version
+    /*
     box.onclick = select;
     function select() {
-      if (!e.selected) {
-        e.selected = true;
+      if (!e.isSelected) {
+        e.isSelected = true;
         li.style.backgroundColor = "grey";
         writeList();
         //this.updateTotalCost();
       } else {
-        e.selected = false;
+        e.isSelected = false;
         li.style.backgroundColor = "white";
         writeList();
         //this.updateTotalCost();
       }     
     }
+    */
+
     // 2.3 Create a removal button
     const removeButton = document.createElement('button'); 
     removeButton.innerHTML = "X";
@@ -129,14 +154,20 @@ function writeList() {
     li.appendChild(box);
     // 2.6 Add button to the list      
     li.appendChild(removeButton);
+    productsList.appendChild(li);
+
+
+    /* My Version
     // 2.5 Add List to either productsList or productsListSelected
-    if (e.selected==true) {
+
+    if (e.isSelected==true) {
       productsListSelected.appendChild(li); 
       //this.updateTotalCost();
     } else {
-      productsList.appendChild(li); 
+       productsList.appendChild(li);
       //this.updateTotalCost();
     } 
+    */
   });  
 }
 
