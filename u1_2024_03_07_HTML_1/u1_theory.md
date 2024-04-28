@@ -36,7 +36,7 @@
 
 ### Tags
 * <em> - cursive
-* <a> - rereference link
+* <a> - reference link
 * <p> - paragraph
 * <h1>...<h6> - header
 
