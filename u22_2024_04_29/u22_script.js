@@ -66,5 +66,4 @@ function displayIndividual(user) {
 
 
 result();
-console.log(userContent.childNodes.length)
 //console.log(displayUsers(fetchUsers()));
