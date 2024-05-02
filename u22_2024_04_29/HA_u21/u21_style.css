@@ -1,0 +1,21 @@
+body {
+    background-color: #f9f9f9;
+    padding: 1%;
+    margin: 5%;
+}
+
+ol {
+    list-style-type: none;  
+    background-color: rgb(199, 198, 208);  
+    margin: 20px;
+}
+
+il {
+    list-style-type: none;  
+    background-color: rgb(210, 218, 224);  
+    margin: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
