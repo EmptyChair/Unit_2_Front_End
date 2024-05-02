@@ -27,5 +27,5 @@ function getImage(x) {
         count = 0;
     }
     newID = count-1;
-    image.src = images[newID].thumbnailUrl;
+    image.src = images.value[newID].thumbnailUrl;
 }
