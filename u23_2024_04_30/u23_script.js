@@ -14,50 +14,17 @@ async function fetchImages() {
     }
 }
 
-
 next.onclick = getNextImage;
 prev.onclick = getPrevImage;
 
-//next.onclick = getImage(1);
-//prev.onclick = getImage(-1);
-
 async function getNextImage() {
-    const images = await fetchImages();
-    console.log("Fetched Images: ");
-    console.log(images);
-    //determine the image ID we need
-    count +=1;
-    console.log("New Count: "+count);
-    if (count<1) {
-        count = 4999 
-    }
-    if (count > 4999) {
-        count = 0;
-    }
-    newID = count;
-    console.log("Id from new count: "+newID);
-    image.src = images[newID].thumbnailUrl;
+    getImage(1);
 }
 
 async function getPrevImage() {
-    const images = await fetchImages();
-    console.log("Fetched Images: ");
-    console.log(images);
-    //determine the image ID we need
-    count -=1;
-    console.log("New Count: "+count);
-    if (count<1) {
-        count = 4999 
-    }
-    if (count > 4999) {
-        count = 0;
-    }
-    newID = count;
-    console.log("Id from new count: "+newID);
-    image.src = images[newID].thumbnailUrl;
+    getImage(-1);
 }
 
-/*
 async function getImage(x) {
     const images = await fetchImages();
     console.log("Fetched Images: ");
@@ -66,13 +33,12 @@ async function getImage(x) {
     count +=x;
     console.log("New Count: "+count);
     if (count<1) {
-        count = 5000 
+        count = 4999 
     }
-    if (count > 5000) {
+    if (count > 4999) {
         count = 0;
     }
     newID = count;
     console.log("Id from new count: "+newID);
     image.src = images[newID].thumbnailUrl;
 }
-*/

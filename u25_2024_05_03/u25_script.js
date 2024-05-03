@@ -4,3 +4,21 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=BeerSheva&appid=${API_K
     .then(response => response.json())
     .then(weather => console.log(weather))
 
+location = "Berlin";
+
+locationInput.oninput = (e) => {
+    location = e.target.value.toLowerCase();
+}
+
+
+console.log(location);
+
+/*
+1. Read location name from input
+
+2. find weather for location
+
+3. display it
+
+*/
+
