@@ -48,6 +48,7 @@ const BASE_URL = "https://jsonplaceholder.typicode.com";
 const image = document.getElementById("image");
 let count = 1;
 
+// works 
 async function fetchImages() {
     try {
         const response = await fetch(`${BASE_URL}/photos`)
@@ -58,18 +59,22 @@ async function fetchImages() {
     }
 }
 
+//launches function instead of waiting
 next.onclick = getImage(1);
 prev.onclick = getImage(-1);
 
+// lacks asynchonicity
 function getImage(x) {
     const images = fetchImages();
     console.log("Reveal fetched images:");
     console.log(images);
-    //determine the image ID we need
     count = count+x;
+    //change count from 1 ot 0, remove newID as superfluous
     if (count<1) {
+        //max value 4999, not 5000
         count = 5000 
     }
+    //ditto
     if (count > 5000) {
         count = 0;
     }
