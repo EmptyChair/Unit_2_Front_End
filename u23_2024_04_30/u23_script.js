@@ -19,31 +19,23 @@ async function getImage(x) {
     console.log("Fetched Images: ");
     console.log(images);
     //determine the image ID we need
-    count +=x;
-    console.log("New Count: "+count);
-    if (count<1) {
+    console.log("Old Count: "+count);
+    count +=x;    
+    if (count < 0) {
         count = 4999 
     }
     if (count > 4999) {
         count = 0;
     }
-    newID = count;
-    console.log("Id from new count: "+newID);
-    image.src = images[newID].thumbnailUrl;
+    console.log("New Count: "+count);
+    image.src = images[count].thumbnailUrl;
 }
 
-async function getNextImage() {
-    getImage(1);
-}
-
-async function getPrevImage() {
-    getImage(-1);
-}
-
-next.onclick = getNextImage;
-prev.onclick = getPrevImage;
+next.onclick = () => { getImage(1) };
+prev.onclick = () => { getImage(-1) };
 
 /*
+// WRONG VERSION
 const BASE_URL = "https://jsonplaceholder.typicode.com";
 const image = document.getElementById("image");
 let count = 1;
@@ -59,11 +51,11 @@ async function fetchImages() {
     }
 }
 
-//launches function instead of waiting
+//launches function immediately instead of waiting for click
 next.onclick = getImage(1);
 prev.onclick = getImage(-1);
 
-// lacks asynchonicity
+// lacks asynchonicity (doesn't wait for fetch)
 function getImage(x) {
     const images = fetchImages();
     console.log("Reveal fetched images:");
