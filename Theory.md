@@ -71,7 +71,7 @@ fetch( `https://api.openweathermap.org/data/2.5/weather?q=BeerSheba&units=metric
 - .then метод поточный, результат предыдущего суют в следующий
 - поэтому console.log может быть только последним - иначе нечего будет передавать дальше
 
-### git 
+### git practice
 
 
 ### Примечания
