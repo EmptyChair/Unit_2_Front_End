@@ -4,7 +4,7 @@
 
 
 
-## Theory ?????: Async/await 
+## Theory 23: Async/await 
 
 * Async/await — это синтаксис, введенный в JavaScript, который упрощает обработку асинхронных операций. Он позволяет писать асинхронный код в синхронном стиле, что упрощает его чтение и понимание. Ключевое слово async используется для определения асинхронной функции, которая неявно возвращает Promise. Внутри асинхронной функции вы можете использовать ключевое слово await, чтобы приостановить выполнение функции до тех пор, пока ожидаемое обещание не будет разрешено. Это позволяет писать асинхронный код, который выглядит и ведет себя как синхронный код, не блокируя основной поток. JS-Fetch:
 
@@ -16,7 +16,7 @@
 
 * Комбинируя async/await, fetch API и манипулирование DOM, вы можете создать код JavaScript, который асинхронно извлекает данные из API, ожидает ответа, а затем изменяет DOM, чтобы отразить полученные данные. Это позволяет создавать мощные и интерактивные веб-приложения, взаимодействующие с внешними службами.
 
-### Practice
+### Practice 23
 * lorem20 - 20 слов lorem ipsum7
 * li.textContent - добавляет только текст
 * li.innerHTML - добавляет HTML, туда можно и параграфы, и хедеры и прочая
@@ -58,7 +58,18 @@
         // Array [ 1, 2 ]
         // The properties `a` and `b` are assigned to properties of `numbers`
         
+### Practice 24
+* array.[map](e => e*2) - multiply every element by 2
+* TIP: make sure you extract only the information necessary from the site. There was no need to drag entire images objects when only url parameters can suffice
+* https://openweathermap.org/ - Weather site API
 
+### Practice 25
+fetch( `https://api.openweathermap.org/data/2.5/weather?q=BeerSheba&units=metric&appid=${API_KEY}` )
+    //.then(response => console.log(response))
+    .then(response => response.json())
+    .then(weather => console.log(weather.name+", temperature as felt "+weather.main.feels_like+" degrees C"))
+- .then метод поточный, результат предыдущего суют в следующий
+- поэтому console.log может быть только последним - иначе нечего будет передавать дальше
 
 
 ### Примечания

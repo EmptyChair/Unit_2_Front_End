@@ -72,8 +72,9 @@ async function findWeather() {
             weather: [ { description, icon } ], 
             main : { temp, pressure, humidity }, 
             //alias
-            wind: { speed : windspeed }, 
+            wind: { speed : windSpeed }, 
             rain: { rainTime },  
+            sys: {sunrise, sunset },
             cod 
         }) {
             if (cod == 404) {
@@ -82,14 +83,19 @@ async function findWeather() {
                 <h5>${location}: Location not found!<h5>
                 `  
             } else {
+                const sunriseTime = new Date(sunrise*1000); //
+                const sunsetTime = new Date(sunset*1000); //
                 li.innerHTML = 
                 `
                 <h3>Location: ${name}</h3>
+                <p><img src="https://openweathermap.org/img/wn/${icon}.png"></p>
                 <h5>Pressure: ${pressure} Pa</h5>
                 <h5>Humidity: ${humidity} %</h5>
                 <h5>Temperature: ${temp} °C</h5>
                 <h5>Weather: ${description}</h5>
-                <h5>Wind: ${windspeed} km/h</h5>                
+                <h5>Sunrise time: ${sunriseTime.getHours()}:${sunriseTime.getMinutes()}:${sunriseTime.getSeconds()}</h5>
+                <h5>Sunset time: ${sunsetTime.getHours()}:${sunsetTime.getMinutes()}:${sunsetTime.getSeconds()}</h5>
+                <h5>Wind: ${windSpeed} km/h</h5>                
                 `    
             }
         } )
@@ -103,57 +109,7 @@ async function findWeather() {
         })    
 }
 
-/* 
-{
-  "coord": {
-    "lon": 10.99,
-    "lat": 44.34
-  },
-  "weather": [
-    {
-      "id": 501,
-      "main": "Rain",
-      "description": "moderate rain",
-      "icon": "10d"
-    }
-  ],
-  "base": "stations",
-  "main": {
-    "temp": 298.48,
-    "feels_like": 298.74,
-    "temp_min": 297.56,
-    "temp_max": 300.05,
-    "pressure": 1015,
-    "humidity": 64,
-    "sea_level": 1015,
-    "grnd_level": 933
-  },
-  "visibility": 10000,
-  "wind": {
-    "speed": 0.62,
-    "deg": 349,
-    "gust": 1.18
-  },
-  "rain": {
-    "1h": 3.16
-  },
-  "clouds": {
-    "all": 100
-  },
-  "dt": 1661870592,
-  "sys": {
-    "type": 2,
-    "id": 2075663,
-    "country": "IT",
-    "sunrise": 1661834187,
-    "sunset": 1661882248
-  },
-  "timezone": 7200,
-  "id": 3163858,
-  "name": "Zocca",
-  "cod": 200
-}
-*/
+
 
 
 
